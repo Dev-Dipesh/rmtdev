@@ -1,12 +1,12 @@
 import { createContext } from "react";
 import useLocalStorage from "../hooks/useLocalStorage";
-import { JOBITEM } from "../lib/types";
+import { JobItem } from "../lib/types";
 import useGetJobs from "../hooks/useGetJobs";
 
 type BookmarkContextType = {
   bookmarkIds: number[];
   handleToggleBookmark: (jobId: number) => void;
-  bookmarkedJobs: JOBITEM[];
+  bookmarkedJobs: JobItem[];
   isLoading: boolean;
 };
 

@@ -1,5 +1,5 @@
 import { useQueries } from "@tanstack/react-query";
-import { JOB } from "../lib/types";
+import { JobItemExpanded } from "../lib/types";
 import useErrorNotification from "./useErrorNotification";
 import getJobItem from "../lib/util/getJobItem";
 
@@ -10,7 +10,7 @@ const queryOptions = {
 };
 
 export default function useGetJobs(ids: number[]): {
-  jobs: JOB[];
+  jobs: JobItemExpanded[];
   isLoading: boolean;
 } {
   const results = useQueries({
@@ -31,7 +31,7 @@ export default function useGetJobs(ids: number[]): {
 
   const jobs = results
     .map((result) => result.data?.jobItem)
-    .filter((job): job is JOB => job !== undefined);
+    .filter((job): job is JobItemExpanded => job !== undefined);
 
   const isLoading = results.some((result) => result.isLoading);
   const isError = results.some((result) => result.isError);

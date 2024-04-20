@@ -1,13 +1,13 @@
 // Custom Hook to fetch jobs from the API
 import { API } from "../lib/constants";
-import { JOBITEM } from "../lib/types";
+import { JobItem } from "../lib/types";
 import { useQuery } from "@tanstack/react-query";
 import useErrorNotification from "./useErrorNotification";
 
 type DataProps = {
   public: boolean;
   sorted: boolean;
-  jobItems: JOBITEM[];
+  jobItems: JobItem[];
 };
 
 const searchJobItems = async (search: string) => {
@@ -21,7 +21,7 @@ const searchJobItems = async (search: string) => {
   return data;
 };
 
-type UseSearchJobsReturnType = [JOBITEM[], boolean];
+type UseSearchJobsReturnType = [JobItem[], boolean];
 
 export default function useSearchJobs(search: string): UseSearchJobsReturnType {
   const { data, isLoading, isError, error } = useQuery<DataProps, Error>({

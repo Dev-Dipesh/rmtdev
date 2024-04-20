@@ -1,9 +1,11 @@
-import { JOB, JobDataType } from "../lib/types";
+import { JobItemExpanded, JobDataType } from "../lib/types";
 import { useQuery } from "@tanstack/react-query";
 import useErrorNotification from "./useErrorNotification";
 import getJobItem from "../lib/util/getJobItem";
 
-export default function useGetJob(id: number | null): [JOB | null, boolean] {
+export default function useGetJob(
+  id: number | null
+): [JobItemExpanded | null, boolean] {
   const { data, isLoading, isError } = useQuery<JobDataType, Error>({
     queryKey: ["job-item", id],
     queryFn: () => {
